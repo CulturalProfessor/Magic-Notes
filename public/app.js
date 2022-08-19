@@ -1,4 +1,4 @@
-console.log("Welcome to console");
+console.log("Welcome to magic notes console");
 //If user add note ,add it to localStorage
 // localStorage.clear();
 showNotes();
