@@ -1,25 +1,19 @@
-console.log("Welcome to magic notes console");
+console.log("Welcome to console");
 //If user add note ,add it to localStorage
 // localStorage.clear();
 showNotes();
 let addBtn = document.getElementById("addBtn");
 addBtn.addEventListener("click", function (e) {
   let addText = document.getElementById("addText");
-  let addTitle=document.getElementById("addTitle");
   let notes = localStorage.getItem("notes");
   if (notes == null) {
     notesObj = [];
   } else {
     notesObj = JSON.parse(notes);
   }
-  let myObj={
-    title:addTitle.value,
-    text:addText.value
-  }
-  notesObj.push(myObj);
+  notesObj.push(addText.value);
   localStorage.setItem("notes", JSON.stringify(notesObj));
   addText.value = "";
-  addTitle.value="";
   console.log(notesObj);
   showNotes();
 });
@@ -36,8 +30,8 @@ function showNotes() {
     html += `
         <div  class="noteCard mx-2 my-2 card" style="width: 18rem;">
           <div class="card-body">
-            <h5 class="card-title">${element.title}</h5>
-             <p>${element.text}</p>
+            <h5 class="card-title">Note ${index + 1}</h5>
+             <p>${element}</p>
              <a id="${index}" onclick="deleteNote(this.id)" class="btn btn-primary">DELETE</a>
             </div>
             </div>
